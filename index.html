@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="/style.css">
+<script src="/scripts.js" type="text/javascript"></script>
+<title>Youtube Downloader</title>
+<body>
+<center>
+<p>
+<a href="/">Refresh</a>
+</p>
+<p>
+<b><u>S</u></b>uper 
+<b><u>E</u></b>asy
+<b><u>Y</u></b>ou
+<b><u>T</u></b>ube
+<b><u>D</u></b>own
+<b><u>L</u></b>oader
+<br>
+Youtube Audio Downloader
+</p>
+
+<!--
+<p>
+<h2 style="color:red">
+The tool my server uses to download and extract audio from Youtube videos is not working at the moment. It seems Youtube changed their setup to hinder people doing what its doing.<br>
+However, it is an actively developed tool and has a high demand, so it should be fixed soon. This is not my fault.
+</h2>
+</p>
+-->
+<p> <input class="textbox" type="text" id="url" onchange="download()" placeholder="Paste a youtube URL here"> </p>
+<p> <button class="button" onclick="download()">Download</button> </p>
+<p>Or</p>
+<p> <input class="textbox" type="text" id="query" onchange="search()" placeholder="Type a track and artist here"> </p>
+<p>
+This will automatically download the first result of your search. (Works very well)<br>
+<b>Only</b> use alpha-numeric characters in the search or it will break and not download your song :)<br>
+<a href="/why.html">Here's why</a>
+</p>
+<p> <button class="button" onclick="search()">Search & Download</button> </p>
+<p>
+	Then wait for a link to appear below, then right click( or long press) and click Save Link.
+</p>
+<p><h1>Progess/Downloads</h1></p>
+<p>
+<button class="button" id="recentButton" onclick="showLogs()">View recent downloads</button>
+</p>
+<p id="progress">
+</p>
+<button class="button" id="allButton" onclick="showDownloads()">View all downloads</button>
+</center>
+
+<p id="downloads">
+</p>
+</body>

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-DISPLAY=":0"
-
 if [ $# -eq 1 ]
 	then
 	url=$(echo "$1" | grep "https://[\.a-z]*youtu.*$" -o)
@@ -11,4 +9,6 @@ if [ $# -eq 1 ]
 	echo ":$url:"
 	youtube-dl --newline -f 140 "$1" | tee "../logs/$id.log"
 
+else
+	echo "Need a URL"
 fi

@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="/style.css">
+<script src="/scripts.js" type="text/javascript"></script>
+<title>Why weird characters break the downloader</title>
+<body>
+<center>
+<h1>
+Why can I only use alpha-numeric characters in a search?
+</h1>
+</center>
+
+<p>
+<p>
+Certain characters have a significance in the scripting languages that this tool is built with.
+</p>
+
+<p>
+Apostrophies, quotation marks, parentheses, brackets, and curly braces are all grouping symbols (much like in algebra) interpretted by the scripts
+</p>
+
+<p>
+As of now this tool simply passes along whatever you type for your search, without any effort to change any grouping symbols into a script-safe alternative
+</p>
+
+<p>
+This means that if you use any of those characters or others not listed, they will be interpretted as part of the script. Since you will most likely use only one of the grouping symbols it will typically throw up an "Unmatched grouping symbol" error.
+</p>
+
+<p>
+This technically is a vulnerablility since you could probably get my machine to run arbitrary code by abusing this "bug". Oh well.
+</p>
+<center>
+<h2>
+Only use letters and numbers!
+</h2>
+</center>
+</p>
+
+</body>

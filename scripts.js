@@ -1,10 +1,14 @@
+var pinterval;
+var dinterval;
 function search(){
 	showLogs();
 
 	var query = document.getElementById("query").value;
 
 	var d = new XMLHttpRequest();
+
 	d.open( "GET", "/action.php?query=" + query ,true);
+	
 	d.send(null);
 
 	document.getElementById("query").value = "";
@@ -15,17 +19,19 @@ function download(){
 	showLogs();
 
 	var url = document.getElementById("url").value;
-	//alert(url);
+	//alert("hey");
 	var d = new XMLHttpRequest();
 	d.open( "GET", "/action.php?url=" + url,true);
 	d.send(null);
-
 	document.getElementById("url").value = "";
 }
 
 function showLogs(){
 	showProgress();
-	setInterval("showProgress()", 1000);
+	pinterval = setInterval("showProgress()", 2000);
+	document.getElementById("recentButton").innerHTML = "Hide";
+	document.getElementById("progress").innerHTML = "Loading...";
+	document.getElementById("recentButton").onclick = hideLogs;
 	window.location = "/#progress";
 }
 
@@ -45,6 +51,7 @@ function showProgress(){
 function showDownloads(){
 	viewDownloads();
 	setInterval("viewDownloads()",1000);
+	window.location = "/#downloads";
 }
 
 function viewDownloads(){
@@ -57,4 +64,11 @@ function viewDownloads(){
 	h .open( "GET", "/action.php?viewDownloads=true" + url,true);
 	h.send(null);
 
+}
+
+function hideLogs(){
+	document.getElementById("progress").innerHTML = "";
+	document.getElementById("recentButton").innerHTML = "View recent downloads";
+	document.getElementById("recentButton").onclick = showLogs;	
+	clearInterval(pinterval);
 }
