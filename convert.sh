@@ -13,6 +13,9 @@ do
 		echo "Converting to mp3..." >> "../logs/$id.log"
 		soundconverter -b -m mp3 -s .mp3 "$file" 
 		echo "<a href=\"/downloads/$safe\">$title</a>" >> "../logs/$id.log"
+
+		#Add to mpd database here!!#
+
 		cp "$file" "/home/tony/Media/Audio/Music/To Be Sorted/"
 		rm "$file"
 	done
