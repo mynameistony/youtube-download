@@ -8,5 +8,6 @@ if [ $# -ne 0 ]
 	id=$(youtube-dl --newline -f 140 "ytsearch:$q" --get-id)
 	echo "Starting download..." >> "../logs/$id.log"
 	youtube-dl --newline -f 140 "ytsearch:$q" | tee "../logs/$id.log"
+	echo "Waiting to convert..."  >> "../logs/$id.log"
 
 fi

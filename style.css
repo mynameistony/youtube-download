@@ -16,9 +16,16 @@ body{
 .button{
 	border-radius: 50px;
 	background-color: #6699FF;
-	width: 95%;
 	height: 110px;
 	font-size: 70px;
+}
+
+.half{
+	width: 49%;
+}
+
+.full{
+	width: 95%;
 }
 
 .bubble{

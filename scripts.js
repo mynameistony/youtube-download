@@ -1,13 +1,19 @@
 var pinterval;
 var dinterval;
-function search(){
+
+function search(type){
 	showLogs();
 
 	var query = document.getElementById("query").value;
 
 	var d = new XMLHttpRequest();
 
-	d.open( "GET", "/action.php?query=" + query ,true);
+	if(type=="video"){
+		d.open( "GET", "/action.php?query=" + query + "&type=video" ,true);
+	}else{
+		d.open( "GET", "/action.php?query=" + query ,true);	
+	}
+	
 	
 	d.send(null);
 
@@ -15,13 +21,22 @@ function search(){
 
 }
 
-function download(){
+function download(type){
 	showLogs();
 
 	var url = document.getElementById("url").value;
 	//alert("hey");
 	var d = new XMLHttpRequest();
-	d.open( "GET", "/action.php?url=" + url,true);
+	if(type=="video")
+	{
+		d.open( "GET", "/action.php?url=" + url + "&type=video",true);
+	}
+	else
+	{
+		d.open( "GET", "/action.php?url=" + url,true);		
+	}
+
+
 	d.send(null);
 	document.getElementById("url").value = "";
 }

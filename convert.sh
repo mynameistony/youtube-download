@@ -7,6 +7,8 @@ while true
 do
 	for file in $(ls | grep "\.m4a$")
 	do
+		mp3=$(echo "$file" | sed s/"m4a$"/"mp3"/g)
+
 		id=$(echo "$file" | grep "\-[-A-Za-z0-9_]*\.m4a$" -o | sed -e s/"\.m4a"/""/g -e s/"^-"/""/g)
 		safe=$(echo "$file" | sed s/" "/"%20"/g | sed s/"m4a$"/"mp3"/g)
 		title=$(echo "$file" | sed s/"-[-A-Za-z0-9_]*\.m4a$"/""/g)
@@ -15,8 +17,7 @@ do
 		echo "<a href=\"/downloads/$safe\">$title</a>" >> "../logs/$id.log"
 
 		#Add to mpd database here!!#
-
-		cp "$file" "/home/tony/Media/Audio/Music/To Be Sorted/"
+		cp "$mp3" "/home/tony/Media/Audio/Music/Youtube/"
 		rm "$file"
 	done
 done

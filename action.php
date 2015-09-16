@@ -2,14 +2,21 @@
 
 	if (isset($_GET['url'])) {
 		$url = $_GET['url'];
-		shell_exec("sudo -u tony ./download.sh $url &");
-	
+		if(isset($_GET['type'])){
+			echo shell_exec("sudo -u tony ./download-video.sh ${url}");
+		}else{
+			echo shell_exec("sudo -u tony ./download.sh $url &");
+		}
 	}
 
 	if (isset($_GET['query'])) {
 		$query = $_GET['query'];
 		echo "$query";
-		echo shell_exec("sudo -u tony ./search.sh ${query} &");
+		if(isset($_GET['type'])){
+			echo shell_exec("sudo -u tony ./search-video.sh ${query}");
+		}else{
+			echo shell_exec("sudo -u tony ./search.sh ${query} &");
+		}
 	
 	}
 

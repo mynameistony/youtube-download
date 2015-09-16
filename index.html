@@ -6,16 +6,9 @@
 <p>
 <a href="/">Refresh</a>
 </p>
-<p>
-<b><u>S</u></b>uper 
-<b><u>E</u></b>asy
-<b><u>Y</u></b>ou
-<b><u>T</u></b>ube
-<b><u>D</u></b>own
-<b><u>L</u></b>oader
-<br>
-Youtube Audio Downloader
-</p>
+<h1>
+Youtube Audio/Video Downloader
+</h1>
 
 <!--
 <p>
@@ -25,28 +18,43 @@ However, it is an actively developed tool and has a high demand, so it should be
 </h2>
 </p>
 -->
-<p> <input class="textbox" type="input" id="url" onchange="download()" placeholder="Paste a youtube URL here"> </p>
-<p> <button class="button" onclick="download()">Download</button> </p>
-
-<p>Or</p>
-
-<p> <input class="textbox" type="text" id="query" onchange="search()" placeholder="Type a track and artist here"> </p>
-<p>
-This will automatically download the first result of your search. (Works very well)<br>
-<b>Only</b> use alpha-numeric characters in the search or it will break and not download your song :)<br>
-<a href="/why.html">Here's why</a>
+<p> <input class="textbox" type="input" id="url" placeholder="Paste a youtube URL here"> </p>
+<p> 
+<button class="half button" onclick="download('audio')">Get Audio</button> 
+<button class="half button" onclick="download('video')">Get Video</button> 
 </p>
-<p> <button class="button" onclick="search()">Search & Download</button> </p>
+<p><h2>Or</h2></p>
+
+<p> <input class="textbox" type="text" id="query" placeholder="Type a track and artist here"> </p>
+
 <p>
-	Then wait for a link to appear below, then right click( or long press) and click Save Link.
+<button class="half button" onclick="search('audio')">Search Audio</button>
+<button class="half button" onclick="search('video')">Search Video</button>
+</p>
+
+<p>
+This will automatically download the first result of your search.
+<br>
+<a href="/why.html">More info</a>
+</p>
+
+<p>
+	<h2>
+	Then
+	</h2>
+</p>
+<p>
+ Wait for a link to appear below, then right click(or long press) and click Save Link.
+ <br>
+ *<i>If you are using an iPhone you won't be able to add it to your library without syncing with your computer. Get a different phone.</i>
 </p>
 <p><h1>Progess/Downloads</h1></p>
 <p>
-<button class="button" id="recentButton" onclick="showLogs()">View recent downloads</button>
+<button class="full button" id="recentButton" onclick="showLogs()">View recent downloads</button>
 </p>
 <p id="progress">
 </p>
-<button class="button" id="allButton" onclick="showDownloads()">View all downloads</button>
+<button class="full button" id="allButton" onclick="showDownloads()">View all downloads</button>
 </center>
 
 <p id="downloads">
