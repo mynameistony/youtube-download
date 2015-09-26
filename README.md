@@ -33,6 +33,11 @@
 
 	Change the "DocumentRoot" directive to point to the package
 
+6. Restart the web server
+	`sudo service apache2 restart`
+
+7. Point your browser to 'localhost' or the servers IP address and enjoy :)
+
 **Notes:
 
 	-Steps 3 & 4 are so the songs/videos are downloaded as your user and you don't need to deal with weird permissions later on.
