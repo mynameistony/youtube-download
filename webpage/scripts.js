@@ -43,7 +43,7 @@ function download(type){
 
 function showLogs(){
 	showProgress();
-	pinterval = setInterval("showProgress()", 5000);
+	pinterval = setInterval("showProgress()", 2000);
 	document.getElementById("recentButton").innerHTML = "Hide";
 	document.getElementById("progress").innerHTML = "Loading...";
 	document.getElementById("recentButton").onclick = hideLogs;
@@ -51,14 +51,13 @@ function showLogs(){
 }
 
 function showProgress(){
-	var url = document.getElementById("url").value;
 	var h = new XMLHttpRequest();
 	h.onreadystatechange=function(){
 		if (h.readyState==4 && h.status==200){
     		document.getElementById("progress").innerHTML=h.responseText;
     	}
   	}	
-	h .open( "GET", "/action.php?viewprogress=true" + url,true);
+	h .open( "GET", "/action.php?viewprogress=true",true);
 	h.send(null);
 
 }
@@ -76,7 +75,7 @@ function viewDownloads(){
     		document.getElementById("downloads").innerHTML=h.responseText;
     	}
   	}	
-	h .open( "GET", "/action.php?viewDownloads=true" + url,true);
+	h .open( "GET", "/action.php?viewDownloads=true",true);
 	h.send(null);
 
 }

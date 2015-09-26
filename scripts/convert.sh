@@ -2,7 +2,7 @@
 SAVEIFS=$IFS
 IFS=$(echo -en "\n\b")
 
-cd downloads
+cd webpage/downloads
 while true
 do
 	for file in $(ls | grep "\.m4a$")
@@ -14,7 +14,7 @@ do
 		title=$(echo "$file" | sed s/"-[-A-Za-z0-9_]*\.m4a$"/""/g)
 		echo "Converting to mp3..." >> "../logs/$id.log"
 		soundconverter -b -m mp3 -s .mp3 "$file" 
-		echo "<a href=\"/downloads/$safe\">$title</a>" >> "../logs/$id.log"
+		echo "<a href=\"/downloads/$safe\"><img src=/music.png class='icon'>$title</a>" >> "../logs/$id.log"
 
 		#Add to mpd database here!!#
 		cp "$mp3" "/home/tony/Media/Audio/Music/Youtube/"

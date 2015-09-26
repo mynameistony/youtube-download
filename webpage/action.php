@@ -1,25 +1,33 @@
 <?php
 
+	##EDIT THIS LINE ##
+	#$command = "sudo -u [USER] ../scripts/download.sh ";
+	$command = "sudo -u tony ../scripts/download.sh ";
+	###################
+	$input = "";
+
 	if (isset($_GET['url'])) {
-		$url = $_GET['url'];
-		if(isset($_GET['type'])){
-			echo shell_exec("sudo -u tony ../scripts/download-video.sh ${url}");
-		}else{
-			echo shell_exec("sudo -u tony ../scripts/download.sh $url &");
+		$input = $_GET['url'];
+		$command .= "download ";
+	}
+	else{
+		if (isset($_GET['query'])) {
+			$input = $_GET['query'];
+			$command .= "search ";
 		}
+
 	}
 
-	if (isset($_GET['query'])) {
-		$query = $_GET['query'];
-		echo "$query";
+	if($input != ""){
 		if(isset($_GET['type'])){
-			echo shell_exec("sudo -u tony ../scripts/search-video.sh ${query}");
+			$command .= "video $input";
+			echo shell_exec("$command");
 		}else{
-			echo shell_exec("sudo -u tony ../scripts/search.sh ${query} &");
+			$command .= "audio $input";
+			echo shell_exec("$command");
 		}
+	}
 	
-	}
-
 	if(isset($_GET['viewprogress'])){
 		echo shell_exec("../scripts/show-progress.sh");
 	}
