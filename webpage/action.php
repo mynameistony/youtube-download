@@ -7,12 +7,12 @@
 	$input = "";
 
 	if (isset($_GET['url'])) {
-		$input = $_GET['url'];
+		$input = escapeshellarg($_GET['url']);
 		$command .= "download ";
 	}
 	else{
 		if (isset($_GET['query'])) {
-			$input = $_GET['query'];
+			$input = escapeshellarg($_GET['query']);
 			$command .= "search ";
 		}
 
