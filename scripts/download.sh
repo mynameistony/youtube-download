@@ -48,11 +48,12 @@ if [ $# -lt 3 ]
 					if [ "$sc" == "1" ]
 						then
 							youtube-dl --newline -f "http_mp3_128_url" "$input"  | tee "../logs/$id.log"
+		                                        echo "<a href=/downloads/$safe-$id.mp3><img src=/music.png class=icon>$title</a>" >> "../logs/$id.log"
 						else
 							youtube-dl --newline -f 140 "$input" | tee "../logs/$id.log"
+							echo "Waiting to convert..." >> "../logs/$id.log"
 					fi
 
-					echo "Waiting to convert..." >> "../logs/$id.log"
 				else
 					youtube-dl --newline -f 18 "$input" | tee "../logs/$id.video.log"
 					echo "<a href=/downloads/$safe-$id.mp4><img src=/video.png class=icon>$title</a>" >> "../logs/$id.video.log"
