@@ -6,6 +6,7 @@ if [ $# -lt 3 ]
 		echo "Usage:"
 	else
 		input=$(echo "$@" | sed s/"$1 $2 "/""/g)
+
 		cd downloads
 
 		case "$1" in
@@ -16,7 +17,7 @@ if [ $# -lt 3 ]
 			q=$(echo "$input" | sed s/" "/"+"/g)
 			id=$(youtube-dl "ytsearch:$q" --get-id)
 			title=$(youtube-dl -e "ytsearch:$q")
-			safe=$(echo $title | sed s/" "/"%20"/g)			
+			safe=$(echo $title | sed s/" "/"%20"/g)
 			echo "Starting download..." >> "../logs/$id.log"
 
 			if [ "$2" == "audio" ]
@@ -30,6 +31,11 @@ if [ $# -lt 3 ]
 		;;
 
 		"download")
+
+			sc=$(echo "$input" | grep "soundcloud" | wc -l)
+
+			echo "$sc"
+
 			echo "Downloading from URL: $input"
 
 			id=$(youtube-dl --get-id "$input")
@@ -39,7 +45,13 @@ if [ $# -lt 3 ]
 			echo "Starting download..." >> "../logs/$id.log"
 			if [ "$2" == "audio" ]
 				then
-					youtube-dl --newline -f 140 "$input" | tee "../logs/$id.log"
+					if [ "$sc" == "1" ]
+						then
+							youtube-dl --newline -f "http_mp3_128_url" "$input"  | tee "../logs/$id.log"
+						else
+							youtube-dl --newline -f 140 "$input" | tee "../logs/$id.log"
+					fi
+
 					echo "Waiting to convert..." >> "../logs/$id.log"
 				else
 					youtube-dl --newline -f 18 "$input" | tee "../logs/$id.video.log"
@@ -51,5 +63,5 @@ if [ $# -lt 3 ]
 		*)
 			echo "Invalid Input"
 			exit
-		esac 	
+		esac
 fi
